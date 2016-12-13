@@ -132,6 +132,12 @@ func (c *Cron) Entries() []*Entry {
 	return c.entrySnapshot()
 }
 
+func (c *Cron) Clean() error {
+	c.Stop()
+	c.entries = nil
+	return nil
+}
+
 // Location gets the time zone location
 func (c *Cron) Location() *time.Location {
 	return c.location
